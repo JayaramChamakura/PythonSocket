@@ -13,13 +13,13 @@ stages {
                 steps {
                         echo "stage 1: compiling project"
 
-                        sh "python -m compileall ./Server"
+                        sh "python -m compileall *.py"
                 }
         }
         stage('Unit tests') {
             steps {
                 echo "stage 2:  Unit testing the application"
-		sh "python -m unittest ./Server/test_server"
+		sh "python -m unittest test_server"
             }
         }
         stage('Build Docker image') {
