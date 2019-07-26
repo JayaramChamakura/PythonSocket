@@ -9,7 +9,12 @@ environment {
 }
 
 stages {
-        stage('Compile') {
+	stage ('Start') {
+		steps {
+			slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+		}
+	}	
+	stage('Compile') {
                 steps {
                         echo "stage 1: compiling project"
 
@@ -36,7 +41,8 @@ stages {
         stage('Run Docker image') {
             steps {
                 echo "stage 4:  run Docker image"
-                sh "docker run --name python-socket-jenkins --hostname=cineserver --detach --rm -p 11001:11001 chjayaramreddy/sockpython"
+                sh "docker stop python-socket-jenkins"
+		sh "docker run --name python-socket-jenkins --hostname=cineserver --detach --rm -p 11001:11001 chjayaramreddy/sockpython"
             }
         }
         stage('Push Docker image') {
