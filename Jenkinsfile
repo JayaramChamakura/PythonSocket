@@ -13,7 +13,7 @@ stages {
                 steps {
                         echo "stage 1: compiling project"
 
-                        sh "python -m compileall ./Server"
+                        sh "python -m compileall *.py"
                 }
         }
         stage('Unit tests') {
