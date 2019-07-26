@@ -46,18 +46,26 @@ stages {
             }
         }
         stage('Push Docker image') {
-            steps {
-                   echo "stage 5: Push the image to registry"
+            	steps {
+                	echo "stage 5: Push the image to registry"
                    //sh "docker push chjayaramreddy/sockpython"
-        	script {
-          		docker.withRegistry( '', registryCredential ) {
-            		dockerImage.push()
+        		script {
+          			docker.withRegistry( '', registryCredential ) {
+            			dockerImage.push()
           		}
         	}
-           }
-
-       }
-      }
+        }
+}
+       	
+post {
+	success {
+		slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+      	}
+	failure {
+		slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+	}
+}
+      	
     
 }
 
