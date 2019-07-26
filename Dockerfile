@@ -2,7 +2,7 @@ FROM python:3.7
 
 # copy all files
 RUN mkdir server
-COPY . /server
+COPY ./Server.py /server
 WORKDIR /server
 
 # install required libraries
