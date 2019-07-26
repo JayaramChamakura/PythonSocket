@@ -19,7 +19,7 @@ stages {
         stage('Unit tests') {
             steps {
                 echo "stage 2:  Unit testing the application"
-		sh "python -m unittest ./Server/test_server"
+		sh "python -m unittest test_server"
             }
         }
         stage('Build Docker image') {
