@@ -25,7 +25,7 @@ stages {
             steps {
                 echo "stage 2:  Unit testing the application"
 		//sh "python -m unittest test_server"
-		sh "docker run --name unittest --hostname=cineserver --detach --rm -p 11001:11001 chjayaramreddy/sockpython"
+		sh "docker run --name unittest --hostname=cineserver --detach --rm  chjayaramreddy/sockpython"
 		sh "docker.exe exec -i unittest sh 'python -m unittest test_server'"
 		
             }
