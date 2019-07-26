@@ -36,7 +36,7 @@ stages {
         stage('Run Docker image') {
             steps {
                 echo "stage 4:  run Docker image"
-                sh "docker run --name python-socket-jenkins --detach --rm -p 11001:11001 chjayaramreddy/sockpython"
+                sh "docker run --name python-socket-jenkins --hostname=cineserver --detach --rm -p 11001:11001 chjayaramreddy/sockpython"
             }
         }
         stage('Push Docker image') {
