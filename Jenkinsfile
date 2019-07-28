@@ -36,7 +36,7 @@ stages {
 		//sh "python -m unittest test_server"
 		sh "if docker ps -a | grep -e 'unittest'; then  docker stop 'unittest'; fi"
 		sh "docker run --name unittest --hostname=cineserver --detach --rm  chjayaramreddy/sockpython"
-		sh "docker exec -i unittest sh 'python -m unittest test_server'"
+		sh "docker exec -i unittest python -m unittest test_server"
 		
             }
         }
