@@ -21,7 +21,7 @@ stages {
                         sh "python -m compileall *.py"
                 }
         }
-	stage('Build Docker image') {
+	stage('Build Docker image1') {
         	steps {
                 	echo "stage 3: docker image build"
                 	script {
